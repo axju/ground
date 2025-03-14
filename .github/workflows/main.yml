@@ -35,7 +35,7 @@ jobs:
 
       - name: Set executable permission (Linux only)
         if: runner.os == 'Linux'
-        run: chmod +x dist/MyApp
+        run: chmod +x dist/ground
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
