@@ -44,4 +44,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: 'dist/'
-          server-dir: 'httpdocs/downloads/'
+          server-dir: ${{ runner.os == 'Windows' && 'httpdocs/downloads/windows/' || 'httpdocs/downloads/linux/' }}
