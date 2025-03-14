@@ -5,9 +5,9 @@ import shutil
 
 from jinja2 import Environment, FileSystemLoader
 
-from .config import Config
-from .model import Project, Product
-from .utils import ProjectIterMode, projects_all, project_media_iter, project_to_product
+from ground.config import Config
+from ground.model import Project, Product
+from ground.utils import ProjectIterMode, projects_all, project_media_iter, project_to_product
 
 
 def products_save_json(products: list[Product], path: Path):
@@ -39,7 +39,7 @@ def render_template(name: str, path: Path, template_env: Environment, **kwargs):
         f.write(rendered_html)
 
 
-def setup_html(template_path: Path = Path(__file__).parent / "templates") -> Environment:
+def setup_html(template_path: Path = Path(__file__).parent.parent / "templates") -> Environment:
     template_loader = FileSystemLoader(str(template_path))
     return Environment(loader=template_loader)
 

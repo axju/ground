@@ -4,8 +4,8 @@ import json
 
 import toml
 
-from .config import Config
-from .model import Project, ProjectDescription, Product
+from ground.config import Config
+from ground.model import Project, ProjectDescription, Product
 
 
 class ProjectIterMode(Enum):
@@ -42,8 +42,7 @@ def projects_iter(mode: ProjectIterMode = ProjectIterMode.DIR, **kwargs: any):
 
 
 def projects_all(config: Config):
-    for project_dir in config.projects:
-        yield from projects_iter(mode=ProjectIterMode.DIR, path=project_dir)
+    yield from projects_iter(mode=ProjectIterMode.DIR, path=config.project_root)
 
 
 def project_media_iter(project: Project):
